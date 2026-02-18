@@ -1,0 +1,905 @@
+/* Background and page layout */
+
+/* 🔥 Remove browser-injected password reveal icons (Edge / Chromium) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+ 
+/* Chromium (Edge / Brave / newer Chrome) */
+input[type="password"]::-webkit-textfield-decoration-container {
+  display: none;
+}
+.login-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+
+  background: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470")
+    no-repeat center center fixed;
+
+  background-size: cover;
+  position: relative;
+}
+
+ 
+.login-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 30, 70, 0.6);
+  z-index: -1;
+  backdrop-filter: blur(10px);
+}
+ 
+/* Container */
+/* LOGIN CONTAINER */
+.login-container {
+  width: 900px;      /* same as register */
+  height: 530px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.85);
+}
+ 
+.left-panel {
+  flex: 0.5;
+ 
+  /* 🎯 EXACT premium blue like screenshot */
+  background: linear-gradient(
+    145deg,
+    rgba(8, 24, 58, 0.92),
+    rgba(11, 36, 78, 0.90),
+    rgba(6, 18, 44, 0.92)
+  );
+ 
+  color: #c0eaff;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ 
+  padding: 40px 32px;
+ 
+  /* subtle depth like poster/card */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+ 
+  animation: fadeInLeft 1s ease forwards;
+  min-width: 0;
+  overflow: hidden;
+}
+ 
+ 
+/* Typing Animation Text */
+.animatedTyping {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid transparent;
+  animation: typing 3s steps(22, end) forwards, glowPulse 2s ease-in-out infinite 3s;
+  color: #dff5ff;
+  font-size: 34px;
+  font-weight: 700;
+}
+ 
+/* Subtitle */
+.subtitle {
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.4;
+  color: #c0eaff;
+  margin-top: 10px;
+  max-width: 500px;
+}
+ 
+/* RIGHT PANEL — 60% */
+.right-panel {
+  flex: 0.5;     /* EXACT 60% */
+  padding: 25px 30px;   /* reduced padding just like register */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5f8fa;
+  animation: fadeInRight 1s ease forwards;
+}
+ 
+/* Login Title */
+.login-title {
+  color: #00264d;
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 8px;   /* 🔥 reduced from 25px → 8px */
+}
+ 
+.login-subtitle {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 12px;  /* 🔥 reduced from 20px → 12px */
+}
+ 
+ 
+/* Input group */
+.input-group {
+  margin-bottom: 10px;
+  min-height: 48px;
+  gap: 8px;
+}
+ 
+/* INPUT FIELDS (match register) */
+.right-panel .input {
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 2px solid #00264d !important;  /* FORCE BLUE BORDER */
+  outline: none;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+ 
+/* On focus — blue highlight */
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 4px rgba(59,130,246,0.4);
+}
+ 
+/* Error text */
+.error {
+  color: red;
+  font-size: 12px;
+}
+ 
+.input.error-border {
+  border: 2px solid #ff6b6b !important;   /* Force error border */
+  box-shadow: none !important;        /* Removes blue glow */
+}
+ 
+/* Error border */
+ 
+/* Options (Remember Me + Forgot Password) */
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #00264d;
+  margin-bottom: 20px;
+}
+ 
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #00264d !important;
+}
+ 
+.checkbox {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: #00264d !important;   /* 🔥 correct property */
+}
+.forgot-password {
+  color: #00264d !important;
+  font-weight: bold;
+  cursor: pointer;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+ 
+ 
+/* Login error */
+.login-error {
+  color: red;
+  margin-top: 10px;
+}
+ 
+.signup {
+  text-align: center;    /* 🔥 center align */
+  margin-top: 8px;       /* 🔥 reduced spacing */
+  width: 100%;
+}
+ 
+.signup * {
+  color: #00264d !important;
+  font-weight: bold;
+}
+ 
+ 
+/* Animation keyframes (same as before) */
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+ 
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+ 
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+ 
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 0px #00e0ff; }
+  50% { text-shadow: 0 0 5px #00aaff; }
+}
+ 
+.register-page {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+
+  background: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470")
+    no-repeat center center fixed;
+
+  background-size: cover;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ 
+.register-page::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 30, 70, 0.6);
+  z-index: -1;
+  backdrop-filter: blur(10px);
+}
+ 
+/* Animations */
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+ 
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+ 
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+ 
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 0px #00e0ff; }
+  50% { text-shadow: 0 0 5px #00aaff; }
+}
+ 
+/* Layout */
+/* Container */
+/* Container */
+.register-page .register-container {
+  width: 900px;       /* 🔥 Better for 40/60 ratio */
+  height: 530px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  background-color: rgba(255,255,255,0.85);
+}
+ 
+/* LEFT PANEL — 40% */
+.register-page .left-panel {
+  flex: 0.5;
+ 
+  /* 🎯 EXACT premium blue like screenshot */
+  background: linear-gradient(
+    145deg,
+    rgba(8, 24, 58, 0.92),
+    rgba(11, 36, 78, 0.90),
+    rgba(6, 18, 44, 0.92)
+  );
+ 
+  color: #c0eaff;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ 
+  padding: 40px 32px;
+ 
+  /* subtle depth like poster/card */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+ 
+  animation: fadeInLeft 1s ease forwards;
+  min-width: 0;
+  overflow: hidden;
+}
+ 
+/* Typing text */
+.register-page .animatedTyping {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid transparent;
+  animation: typing 3s steps(22, end) forwards,
+             glowPulse 2s ease-in-out infinite 3s;
+  color: #dff5ff;
+  font-size: 34px;
+  font-weight: 700;
+}
+ 
+/* Sub text */
+.register-page .subtitle {
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.4;
+  color: #c0eaff;
+  margin-top: 10px;
+  text-align: center;
+  max-width: 500px;
+}
+ 
+/* RIGHT PANEL — 60% */
+.register-page .right-panel {
+  flex: 0.5;   /* 🔥 EXACT 60% */
+  padding: 5px 5px 5px 5px;   /* 🔥 reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5f8fa;
+  animation: fadeInRight 1s ease forwards;
+}
+ 
+/* Title */
+.register-page .loginTitle {
+  color: #00264d;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;   /* ⭐ Center the title */
+  width: 100%;          /* ensures perfect centering */
+}
+ 
+ 
+/* Form */
+.register-page .form {
+  width: 85%;
+  max-width: 430px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;   /* 🔥 reduced gap */
+}
+ 
+ 
+/* Input fields */
+.register-page .input {
+  width: 100%;
+  padding: 16px 16px;   /* 🔥 smaller padding */
+  border-radius: 14px;
+  border: 2px solid #00264d!important;
+  outline: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+ 
+/* Focused input — BLUE BORDER */
+.register-page .input:focus {
+  border-color: #00264d;
+  box-shadow: 0 0 4px rgba(59,130,246,0.4);
+}
+ 
+/* Error text */
+.register-page .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 1px;
+}
+ 
+/* Button */
+.register-page .signInButton {
+  background-color: #00264d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s ease;
+}
+ 
+/* Button hover */
+.register-page .signInButton:hover {
+  background-color: #00264d;
+}
+ 
+/* Footer */
+.register-page .footerText {
+  text-align: center;
+  margin-top: 15px;
+}
+ 
+.register-page .signUpLink {
+  color: #00264d;
+  font-weight: bold;
+}
+ 
+/* ResetPassword.css */
+
+/* Background for this page only */
+.reset-password-page {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&am…') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+.reset-password-page::before {
+  content: "";
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+/* Right panel styling */
+.reset-back-arrow {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #00264d;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s ease;
+}
+
+.reset-back-arrow:hover {
+  color: #003873;
+}
+
+/* IMPORTANT — make the panel allow absolute child */
+.reset-password-panel {
+  position: relative;   /* 🔥 REQUIRED */
+  width: 400px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+
+/* Title */
+.reset-password-title {
+  color: #00264d;
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 20px;     /* reduced */
+  text-align: center;
+}
+
+/* Form */
+.reset-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.reset-password-input-group {
+  margin-bottom: 15px;
+}
+
+.reset-password-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid #00264d;  /* 🔵 default blueish border */
+  outline: none;
+  font-size: 15px;
+  transition: 0.25s ease;
+  background: #fff;
+  box-sizing: border-box;
+}
+.reset-password-input.error-border {
+  border-color: red !important;
+}
+.reset-password-input.error {
+  color: #000 !important; /* prevent typing text from becoming red */
+}
+
+
+.reset-password-button {
+  background-color: #00264d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-password-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.reset-password-input,
+.reset-password-button {
+  width: 100%;       /* make both full width */
+  box-sizing: border-box; /* ensures padding is included in width */
+}
+
+.reset-password-button {
+  margin-top: 10px;   /* optional: space between input and button */
+}
+
+.reset-back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #00264d;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.reset-back-arrow:hover {
+  color: #003873;
+}
+
+
+/* VerifyOtp.css */
+
+/* Page background */
+.verify-otp-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&am…') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+.verify-otp-page::before {
+  content: "";
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+/* Panel */
+.verify-otp-panel {
+  position: relative; /* 🔥 Important for arrow placement */
+  width: 400px;
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(245, 248, 250, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Back arrow inside Verify OTP panel */
+.verify-back-arrow {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #00264d;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s ease;
+}
+
+.verify-back-arrow:hover {
+  color: #003873;
+}
+
+
+/* Title */
+.verify-otp-title {
+  color: #00264d;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form */
+.verify-otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.verify-otp-input-group {
+  margin-bottom: 15px;
+}
+
+.verify-otp-input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #00264d;
+  outline: none;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.verify-otp-input.highlight {
+  border-color: rgb(16, 91, 196);
+}
+
+.verify-otp-input.error {
+  border-color: red;
+}
+
+.verify-otp-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.verify-otp-button {
+  width: 100%; /* match input width */
+  background-color: #00264d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.verify-otp-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* SetNewPassword.css */
+
+/* Page background */
+.set-new-password-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&am…') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+.set-new-password-page::before {
+  content: "";
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+/* Panel */
+.set-new-password-panel {
+  width: 400px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(245, 248, 250, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Title */
+.set-new-password-title {
+  color: #00264d;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+
+/* Form */
+.set-new-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.set-new-password-input-group {
+  margin-bottom: 15px;
+}
+
+.set-new-password-input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.set-new-password-input.highlight {
+  border-color: #0c479aff;
+}
+
+.set-new-password-input.error {
+  border-color: red;
+}
+
+.set-new-password-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.set-new-password-success {
+  color: green;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.set-new-password-button {
+  width: 100%; /* match input width */
+  background-color: #00264d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.set-new-password-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+.sign-in-button,
+.sign-in-other-button {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-top: 0px !important;
+}
+
+.or-separator {
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  color: #555;
+}
+
+.sign-in-other-button {
+  background-color: #fff;
+  border: 1px solid #0a2342;
+  color: #0a2342;
+}
+
+.sign-in-button {
+  background-color: #0a2342;
+  color: #fff;
+  border: none;
+}
+
+/* Role Selection */
+.role-selection {
+  display: flex;
+  justify-content: center;   /* ✅ center the card */
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.role-card {
+  height: 60px;              /* ✅ SAME HEIGHT AS INPUT */
+  display: flex;             /* ✅ perfect centering */
+  align-items: center;
+  justify-content: center;
+
+  background: #f3f4ff;
+  border: 2px solid #00264d;
+  border-radius: 14px;
+
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #00264d;
+
+  transition: all 0.25s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-3px);
+  border-color: #00264d;
+}
+
+.role-card.active {
+  border-color: #00264d;
+  background-color: #f0efff;
+  box-shadow: 0 4px 8px rgba(6, 0, 105, 0.3);
+}
+
+.role-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.role-card p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 12px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+  pointer-events: auto;
+}
+
+
+.password-toggle-icon:hover {
+  color: #000;
+}

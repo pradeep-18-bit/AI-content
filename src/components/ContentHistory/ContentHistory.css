@@ -1,0 +1,244 @@
+/* ================= GLOBAL HARD LOCK ================= */
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* ================= PAGE CONTAINER ================= */
+.history-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+  max-width: 100%;
+
+  min-height: calc(100vh - 70px);
+  background-color: #f9fafb;
+
+  padding: 20px;               /* EVEN padding */
+  box-sizing: border-box;
+
+  overflow-x: hidden !important;
+  overflow-y: auto;
+}
+
+/* ================= PAGE LAYOUT ================= */
+.history-page {
+  width: 100%;
+  max-width: 1225px;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* ================= HEADER ================= */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 25px 20px;
+}
+
+.history-header h2 {
+  margin: 10px 0 4px;
+  color: #1631ce;
+}
+
+.history-header p {
+  margin: 0 0 16px;
+  color: #555;
+}
+
+/* ================= BUTTON ================= */
+.generate-btn {
+  background-color: #2e397a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  background-color: #2e397a;
+}
+
+
+/* ================= FILTERS ================= */
+.history-filters {
+  display: flex;
+  gap: 12px;
+  margin: 0 25px 25px;
+}
+
+.history-filters input {
+  flex: 0 0 65.5%;
+  padding: 10px 10px;
+  border: 1px solid #2e397aff;
+  border-radius: 8px;
+  font-size: 14px;
+ 
+  /* 🔍 added only */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2398A2B3' viewBox='0 0 24 24'%3E%3Cpath d='M21 20l-5.2-5.2a7 7 0 10-1 1L20 21zM4 10a6 6 0 1112 0 6 6 0 01-12 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  margin-right: 10px;
+}
+
+.history-filters select {
+ flex: 0 0 15.6% !important;
+  max-width: 15.6% !important;
+  padding: 10px 12px;
+  border: 1px solid #2e397aff;
+  border-radius: 8px;
+  font-size: 14px;
+   margin-right: 10px;
+}
+
+/* ================= LIST ================= */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 25px 30px;
+}
+
+/* ================= ITEM ================= */
+.history-item {
+  background: #ffffff;
+  border: 1px solid #2e397a;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  word-break: break-word;
+}
+
+/* ================= CONTENT ================= */
+.history-info {
+  flex: 1;
+}
+
+.history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-top h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* ================= ACTIONS ================= */
+.history-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 15px;
+}
+
+/* ================= EMPTY ================= */
+.empty {
+  text-align: center;
+  margin-top: 80px;
+  color: #6b7280;
+}
+
+/* ================= MODAL (ZOOM SAFE) ================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;                    /* 🔥 replaces width:100vw */
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 40px 20px;
+  z-index: 9999;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* Popup wrapper (no black screen, only center popup) */
+.simple-popup-wrapper{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  z-index: 9999;
+}
+
+/* Popup box */
+.modal-content{
+  background: #fff; 
+  border: 1px solid #2563eb;
+  border-radius: 15px; 
+  box-shadow: none;   /* remove outside shadow */
+  padding: 0;
+}
+
+/* Header */
+.modal-header{
+  position: relative;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Body */
+.modal-body{
+  padding: 16px;
+}
+
+/* Buttons – look like real buttons */
+.cancel-btn,
+.delete-btn{
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Cancel */
+.cancel-btn{
+  background: #fff;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+/* Delete */
+.delete-btn{
+  background: #2563eb;
+  color: #fff;
+  border: 1px solid #2563eb;
+}
+
+.cancel-btn:hover,
+.delete-btn:hover{
+  opacity: 0.9;
+}

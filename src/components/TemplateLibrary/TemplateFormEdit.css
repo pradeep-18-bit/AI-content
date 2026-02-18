@@ -1,0 +1,165 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  /* Centers the page content horizontally */
+  align-items: flex-start;
+  /* Aligns content from top */
+  width: 100vw;
+  min-height: calc(100vh - 70px);
+  /* Adjust if your navbar height differs */
+  background-color: #f9fafb;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  /* Remove horizontal scroll */
+  overflow-y: auto;
+  /* Keep vertical scroll */
+}
+
+.form-card {
+  width: 650px;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  /* ✅ Blue border */
+  border: 2px solid #2e397aff;
+}
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  box-sizing: border-box;
+  margin-top: 3px;
+  font-family: inherit;
+}
+.form-textarea {
+  width: 100%;
+  resize: vertical;     /* ✅ only up/down */
+  overflow-x: hidden;   /* ❌ no horizontal scroll */
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 50px;
+}
+
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  border: 2px solid #ff3b3b;
+}
+
+.error-text {
+  color: #ff3b3b;
+  font-size: 12px;
+  height: 10px;
+  margin-bottom: 4px;
+}
+
+.submit-btn {
+  padding: 12px;
+  background: #2e397aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.td-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  background: transparent;
+}
+
+.td-card {
+  width: 600px;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+  text-align: left;
+}
+
+.td-card h2 {
+  margin-bottom: 15px;
+}
+
+.td-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.td-buttons button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.td-update {
+  background: #2e397aff;
+  color: white;
+}
+
+.td-delete {
+  background: #ff4d4d;
+  color: white;
+}
+
+.td-error {
+  color: red;
+  margin-top: 8px;
+}
+
+.td-success {
+  color: green;
+  margin-top: 8px;
+}
+.form-card {
+  position: relative;
+}
+
+/* Top Left Back Arrow */
+.back-arrow-btn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.back-arrow-btn:hover {
+  text-decoration: underline;
+}

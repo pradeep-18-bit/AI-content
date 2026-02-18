@@ -1,0 +1,206 @@
+/* BACKDROP */
+.adm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  padding: 12px;
+}
+ 
+/* MODAL */
+.adm-modal {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #2e397aff;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+ 
+/* TITLE */
+.adm-modal h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+ 
+/* FORM */
+.adm-modal form {
+  display: grid;
+  gap: 10px;
+}
+ 
+/* AVATAR */
+.adm-avatar {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  cursor: pointer; /* ✅ clickable */
+}
+ 
+.adm-avatar img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+ 
+.adm-avatar-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #eaeaea;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  color: #999;
+  transition: background 0.2s ease;
+}
+ 
+.adm-avatar-placeholder:hover {
+  background: #dcdcdc;
+}
+ 
+/* ✅ HIDE FILE INPUT */
+.adm-avatar input[type="file"] {
+  display: none;
+}
+ 
+/* INPUTS */
+.adm-modal input,
+.adm-modal textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid #2e397aff;
+  font-family: inherit;
+  font-size: 14px;
+}
+ 
+.adm-modal textarea {
+  resize: none;
+  min-height: 60px;
+}
+ 
+/* READONLY */
+.readonly {
+  background: #f4f4f4;
+  cursor: not-allowed;
+}
+ 
+/* ERROR */
+.adm-error {
+  color: red;
+  text-align: center;
+  font-size: 13px;
+}
+ 
+/* ACTION BUTTONS */
+.adm-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+ 
+/* PRIMARY BUTTON */
+.adm-modal button[type="submit"] {
+  padding: 10px;
+  background: #2e397aff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+ 
+.adm-modal button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+ 
+/* SKIP BUTTON */
+.adm-skip {
+  background: #2e397aff;
+  border: none;
+  color: #ffff;
+  cursor: pointer;
+  font-size: 14px;
+   border-radius: 6px;
+}
+/* -------------------- MEDIA QUERIES -------------------- */
+ 
+/* SMALL PHONES */
+@media (max-width: 480px) {
+  .adm-modal {
+    padding: 16px;
+  }
+ 
+  .adm-actions {
+    grid-template-columns: 1fr;
+  }
+ 
+  .adm-avatar img,
+  .adm-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+}
+ 
+/* TABLETS */
+@media (min-width: 481px) and (max-width: 768px) {
+  .adm-modal {
+    max-width: 500px;
+  }
+}
+ 
+/* LARGE SCREENS */
+@media (min-width: 1024px) {
+  .adm-modal {
+    max-width: 420px;
+  }
+}
+ 
+.adm-avatar-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  position: relative;          /* 🔑 key */
+  color: #777;
+  transition: all 0.2s ease;
+}
+ 
+.adm-avatar-placeholder:hover {
+  background: #e6e6e6;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+ 
+/* PERFECTLY CENTERED + */
+.adm-avatar-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%); /* slight optical fix */
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+}
+ 
+/* LABEL AT BOTTOM */
+.adm-avatar-label {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: #888;
+}
+ 
+ 
